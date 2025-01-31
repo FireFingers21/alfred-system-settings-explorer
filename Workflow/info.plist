@@ -287,6 +287,25 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>externaltriggerid</key>
+				<string>listSettings</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>A06AE1FD-8C6F-4253-B457-A9B9E77E6419</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -314,25 +333,6 @@ fi</string>
 			<string>0214A1CF-CD90-405A-A5E7-08F166C8FEA6</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>listSettings</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>A06AE1FD-8C6F-4253-B457-A9B9E77E6419</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -563,22 +563,9 @@ Configure the [Hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/
 	</array>
 	<key>variables</key>
 	<dict>
-		<key>keyword</key>
-		<string>ss</string>
-		<key>keyword1</key>
-		<string>ss</string>
-		<key>keywordM1</key>
-		<string>ss</string>
 		<key>submenu</key>
 		<string>main.sh</string>
 	</dict>
-	<key>variablesdontexport</key>
-	<array>
-		<string>submenu</string>
-		<string>keyword1</string>
-		<string>keywordM1</string>
-		<string>keyword</string>
-	</array>
 	<key>version</key>
 	<string>2025.1</string>
 	<key>webaddress</key>
