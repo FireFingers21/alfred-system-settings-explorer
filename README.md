@@ -1,6 +1,6 @@
 # <img src='Workflow/icon.png' width='45' align='center' alt='icon'> System Settings Explorer
 
-Quickly navigate System Settings in Alfred
+Quickly navigate System Settings from Alfred
 
 ## Usage
 
