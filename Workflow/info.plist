@@ -595,7 +595,7 @@ Configure the [Hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/
 		<string>main.sh</string>
 	</dict>
 	<key>version</key>
-	<string>2025.2</string>
+	<string>2025.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/FireFingers21/alfred-system-settings-explorer</string>
 </dict>
