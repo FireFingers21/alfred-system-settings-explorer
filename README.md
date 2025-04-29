@@ -2,6 +2,8 @@
 
 Quickly navigate System Settings from Alfred
 
+[⤓ Install from the Alfred Gallery](https://alfred.app/workflows/firefingers21/system-settings-explorer/)
+
 ## Usage
 
 View and search for System Settings panes with the `sse` keyword.
