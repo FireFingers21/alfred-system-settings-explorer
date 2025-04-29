@@ -83,14 +83,14 @@ cat << EOB
 		"subtitle": "System Settings → General",
 		"arg": "general.sh",
 		"icon": { "path": "images/General.png" },
-		"mods": { "cmd": { "subtitle": "Open Pane in System Settings", "arg": "x-apple.systempreferences:com.apple.systempreferences.GeneralSettings" } }
+		"mods": { "cmd": { "subtitle": "⌘↩ Open Pane in System Settings", "arg": "x-apple.systempreferences:com.apple.systempreferences.GeneralSettings" } }
 	},
 	{
 		"title": "Accessibility",
 		"subtitle": "System Settings → Accessibility",
 		"arg": "accessibility.sh",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "cmd": { "subtitle": "Open Pane in System Settings", "arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension" } }
+		"mods": { "cmd": { "subtitle": "⌘↩ Open Pane in System Settings", "arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension" } }
 	},
 	{
 		"title": "Appearance",
@@ -175,7 +175,7 @@ cat << EOB
 		"subtitle": "System Settings → Privacy & Security",
 		"arg": "privacySecurity.sh",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "cmd": { "subtitle": "Open Pane in System Settings", "arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension" } },
+		"mods": { "cmd": { "subtitle": "⌘↩ Open Pane in System Settings", "arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension" } },
 		"match": "Privacy & and Security"
 	},
 	{
