@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.firefingers21.systemsettingsexplorer</string>
+	<key>category</key>
+	<string>Shared</string>
 	<key>connections</key>
 	<dict>
 		<key>0214A1CF-CD90-405A-A5E7-08F166C8FEA6</key>
@@ -189,22 +191,19 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>if [[ "${runImmediately}" -eq 1 ]]; then
-osascript -e 'tell application id "com.runningwithcrayons.Alfred"
-	search text 1 thru -2 of (system attribute "alfred_workflow_keyword")
-	run trigger "listSettings" in workflow "com.firefingers21.systemsettingsexplorer"
-end tell'
-else
-cat &lt;&lt; EOB
-{"items": [
-	{
-		"title": "${alfred_workflow_name}",
-		"subtitle": "${alfred_workflow_description}",
-		"arg": "main.sh"
-	}
-]}
-EOB
-fi</string>
+				<string>ObjC.import("stdlib")
+
+if ($.getenv("runImmediately") == 1) {
+  Application("com.runningwithcrayons.Alfred").search($.getenv("explorer_keyword").slice(0, -1));
+  Application("com.runningwithcrayons.Alfred").runTrigger("listSettings", {inWorkflow: $.getenv("alfred_workflow_bundleid")});
+} else {
+  workflowJSON = {
+    "title": $.getenv("alfred_workflow_name"),
+    "subtitle": $.getenv("alfred_workflow_description"),
+  	"arg": "main.sh"
+  }
+  JSON.stringify({"items": [workflowJSON]})
+}</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -216,7 +215,7 @@ fi</string>
 				<key>title</key>
 				<string>{const:alfred_workflow_name}</string>
 				<key>type</key>
-				<integer>11</integer>
+				<integer>7</integer>
 				<key>withspace</key>
 				<false/>
 			</dict>
