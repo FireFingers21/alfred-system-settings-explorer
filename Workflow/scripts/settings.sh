@@ -66,7 +66,7 @@ cat << EOB
 		"subtitle": "System Settings → Network",
 		"arg": "x-apple.systempreferences:com.apple.Network-Settings.extension",
 		"icon": { "path": "images/Network.png" },
-		"match": "Network Firewall DNS ${matchVPN}"
+		"match": "Network Firewall DNS Locations ${matchVPN}"
 	},
 	$showVPN
 	{
