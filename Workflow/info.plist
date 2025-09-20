@@ -142,7 +142,7 @@
 				<key>imageaspect</key>
 				<integer>0</integer>
 				<key>inputfile</key>
-				<string>scripts/{var:submenu}</string>
+				<string>explore.sh</string>
 				<key>inputtype</key>
 				<integer>1</integer>
 				<key>loadingtext</key>
@@ -336,7 +336,7 @@ if ($.getenv("runImmediately") == 1) {
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>{query}</string>
+				<string></string>
 				<key>passthroughargument</key>
 				<false/>
 				<key>variables</key>
@@ -589,13 +589,8 @@ Configure the [Hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/
 			<string>showPrivacySecurity</string>
 		</dict>
 	</array>
-	<key>variables</key>
-	<dict>
-		<key>submenu</key>
-		<string>main.sh</string>
-	</dict>
 	<key>version</key>
-	<string>2025.4</string>
+	<string>2025.9</string>
 	<key>webaddress</key>
 	<string>https://github.com/FireFingers21/alfred-system-settings-explorer</string>
 </dict>
