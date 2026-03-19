@@ -604,11 +604,12 @@ function privacySecurity {
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
 	},
 	{
-		"title": "HomeKit",
-		"subtitle": "System Settings → Privacy & Security → HomeKit",
+		"title": "Home",
+		"subtitle": "System Settings → Privacy & Security → Home",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_HomeKit",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"match": "HomeKit"
 	},
 	{
 		"title": "Media & Apple Music",
