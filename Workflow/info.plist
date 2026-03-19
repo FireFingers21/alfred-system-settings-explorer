@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>52C947B6-2932-44B3-B614-3BC6C27B7989</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6E31767D-2D46-44A7-85BF-92251A91CA63</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7F0190F9-DC91-4EA4-88AE-073C8B9F2C1A</key>
 		<array>
 			<dict>
@@ -31,7 +44,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 		<key>8220D5E6-A495-4C7E-B837-F00DE9C1C524</key>
@@ -64,7 +77,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>6E31767D-2D46-44A7-85BF-92251A91CA63</string>
+				<string>52C947B6-2932-44B3-B614-3BC6C27B7989</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -229,6 +242,19 @@ if ($.getenv("runImmediately") == 1) {
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>unstackview</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>52C947B6-2932-44B3-B614-3BC6C27B7989</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -285,6 +311,25 @@ if ($.getenv("runImmediately") == 1) {
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>externaltriggerid</key>
+				<string>listSettings</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>A06AE1FD-8C6F-4253-B457-A9B9E77E6419</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -312,25 +357,6 @@ if ($.getenv("runImmediately") == 1) {
 			<string>0214A1CF-CD90-405A-A5E7-08F166C8FEA6</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>listSettings</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>A06AE1FD-8C6F-4253-B457-A9B9E77E6419</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -388,6 +414,15 @@ Configure the [Hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/
 			<real>30</real>
 			<key>ypos</key>
 			<real>145</real>
+		</dict>
+		<key>52C947B6-2932-44B3-B614-3BC6C27B7989</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>10</integer>
+			<key>xpos</key>
+			<real>555</real>
+			<key>ypos</key>
+			<real>45</real>
 		</dict>
 		<key>6E31767D-2D46-44A7-85BF-92251A91CA63</key>
 		<dict>
