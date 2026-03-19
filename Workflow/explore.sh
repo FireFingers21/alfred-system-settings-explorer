@@ -64,7 +64,7 @@ function settings {
 		"subtitle": "System Settings → Network",
 		"arg": "x-apple.systempreferences:com.apple.Network-Settings.extension",
 		"icon": { "path": "images/Network.png" },
-		"match": "Network Firewall DNS Locations ${matchVPN}"
+		"match": "Network Firewall DNS Locations ${matchVPN} Ethernet Thunderbolt Bridge"
 	},
 	${showVPN}
 	{
@@ -101,7 +101,7 @@ function settings {
 		"title": "Menu Bar",
 		"subtitle": "System Settings → Menu Bar",
 		"arg": "x-apple.systempreferences:com.apple.ControlCenter-Settings.extension*menubar",
-		"icon": { "path": "images/Control Center.png" },
+		"icon": { "path": "images/Menu Bar.png" },
 		"match": "Control Center Centre Menu bar Menubar"
 	},
 	{
@@ -116,13 +116,14 @@ function settings {
 		"subtitle": "System Settings → Desktop & Dock",
 		"arg": "x-apple.systempreferences:com.apple.Desktop-Settings.extension",
 		"icon": { "path": "images/Desktop & Dock.png" },
-		"match": "Desktop & and Dock Stage Manager Mission Control Widgets Default Web Browser Spaces"
+		"match": "Desktop & and Dock Stage Manager Mission Control Widgets Windows Default Web Browser Spaces Hot Corners"
 	},
 	{
 		"title": "Displays",
 		"subtitle": "System Settings → Displays",
 		"arg": "x-apple.systempreferences:com.apple.Displays-Settings.extension",
-		"icon": { "path": "images/Displays.png" }
+		"icon": { "path": "images/Displays.png" },
+		"match": "Displays Universal Control Sidecar"
 	},
 	{
 		"title": "Spotlight",
@@ -134,7 +135,8 @@ function settings {
 		"title": "Wallpaper",
 		"subtitle": "System Settings → Wallpaper",
 		"arg": "x-apple.systempreferences:com.apple.Wallpaper-Settings.extension",
-		"icon": { "path": "images/Wallpaper.png" }
+		"icon": { "path": "images/Wallpaper.png" },
+		"match": "Wallpaper Screen Saver Clock"
 	},
 	$(for i in {1..$((3+${gap}*2))}; do echo $spacer; done)
 	{
@@ -147,7 +149,8 @@ function settings {
 		"title": "Sound",
 		"subtitle": "System Settings → Sound",
 		"arg": "x-apple.systempreferences:com.apple.Sound-Settings.extension",
-		"icon": { "path": "images/Sound.png" }
+		"icon": { "path": "images/Sound.png" },
+		"match": "Sound AirPlay"
 	},
 	{
 		"title": "Focus",
@@ -188,7 +191,7 @@ function settings {
 		"subtitle": "System Settings → Users & Groups",
 		"arg": "x-apple.systempreferences:com.apple.Users-Groups-Settings.extension",
 		"icon": { "path": "images/Users & Groups.png" },
-		"match": "Users & and Groups"
+		"match": "Users & and Groups Administrator Account"
 	},
 	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
 	{
@@ -297,7 +300,7 @@ function general {
 		"arg": "x-apple.systempreferences:com.apple.Coverage-Settings.extension",
 		"icon": { "path": "images/AppleCare & Warranty.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
-		"match": "AppleCare & and Warranty Coverage"
+		"match": "AppleCare & and Warranty Coverage Legal"
 	},
 	{
 		"title": "Airdrop & Handoff",
@@ -305,7 +308,7 @@ function general {
 		"arg": "x-apple.systempreferences:com.apple.AirDrop-Handoff-Settings.extension",
 		"icon": { "path": "images/Airdrop & Handoff.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
-		"match": "Airdrop & and Handoff"
+		"match": "Airdrop & and Handoff AirPlay"
 	},
 	{
 		"title": "Autofill & Passwords",
@@ -321,7 +324,7 @@ function general {
 		"arg": "x-apple.systempreferences:com.apple.Date-Time-Settings.extension",
 		"icon": { "path": "images/Date & Time.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
-		"match": "Date & and Time"
+		"match": "Date & and Time Clock"
 	},
 	{
 		"title": "Language & Region",
@@ -360,7 +363,7 @@ function general {
 		"arg": "x-apple.systempreferences:com.apple.Time-Machine-Settings.extension",
 		"icon": { "path": "images/Time Machine.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
-		"match": "Time Machine Backup"
+		"match": "Time Machine Backup Up Restore"
 	},
 	$([[ ${gridCols} != 7 ]] && for i in {1..$((5+${gap}*2 < ${gridCols} ? 5:1))}; do echo $spacer; done)
 	{
@@ -376,7 +379,8 @@ function general {
 		"subtitle": "System Settings → General → Transfer or Reset",
 		"arg": "x-apple.systempreferences:com.apple.Transfer-Reset-Settings.extension",
 		"icon": { "path": "images/Transfer or Reset.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"match": "Transfer or Reset Erase"
 	},
 	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
 	${goBack}
