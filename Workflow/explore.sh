@@ -77,6 +77,7 @@ function settings {
 	${spacerVPN}
 	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
 	{
+		"uid": "general",
 		"title": "General",
 		"subtitle": "System Settings → General",
 		"arg": "general",
@@ -84,6 +85,7 @@ function settings {
 		"mods": { "cmd": { "subtitle": "⌘↩ Open Pane in System Settings", "arg": "x-apple.systempreferences:com.apple.systempreferences.GeneralSettings" } }
 	},
 	{
+		"uid": "accessibility",
 		"title": "Accessibility",
 		"subtitle": "System Settings → Accessibility",
 		"arg": "accessibility",
@@ -172,6 +174,7 @@ function settings {
 		"icon": { "path": "images/Lock Screen.png" }
 	},
 	{
+		"uid": "privacySecurity",
 		"title": "Privacy & Security",
 		"subtitle": "System Settings → Privacy & Security",
 		"arg": "privacySecurity",
@@ -261,12 +264,13 @@ function general {
 		"title": "",
 		"subtitle": "System Settings → General",
 		"valid": false,
-		"mods": { "shift": { "subtitle": "System Settings" } }
+		"mods": { "shift": { "subtitle": "System Settings", "variables":{"nestedPane":"general"} } }
 	},'
     goBack='{
 		"title": "Go Back",
 		"subtitle": "System Settings",
-		"icon": { "path": "images/Settings.png" }
+		"icon": { "path": "images/Settings.png" },
+		"variables": { "nestedPane": "general" }
 	},'
 
     [[ -z "${submenu}" ]] && goBack="${spacer}"
@@ -277,21 +281,21 @@ function general {
 		"subtitle": "System Settings → General → About",
 		"arg": "x-apple.systempreferences:com.apple.SystemProfiler.AboutExtension",
 		"icon": { "path": "images/About.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } }
 	},
 	{
 		"title": "Software Update",
 		"subtitle": "System Settings → General → Software Update",
 		"arg": "x-apple.systempreferences:com.apple.Software-Update-Settings.extension",
 		"icon": { "path": "images/Software Update.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } }
 	},
 	{
 		"title": "Storage",
 		"subtitle": "System Settings → General → Storage",
 		"arg": "x-apple.systempreferences:com.apple.settings.Storage",
 		"icon": { "path": "images/Storage.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } }
 	},
 	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
 	{
@@ -299,7 +303,7 @@ function general {
 		"subtitle": "System Settings → General → AppleCare & Warranty",
 		"arg": "x-apple.systempreferences:com.apple.Coverage-Settings.extension",
 		"icon": { "path": "images/AppleCare & Warranty.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "AppleCare & and Warranty Coverage Legal"
 	},
 	{
@@ -307,7 +311,7 @@ function general {
 		"subtitle": "System Settings → General → Airdrop & Handoff",
 		"arg": "x-apple.systempreferences:com.apple.AirDrop-Handoff-Settings.extension",
 		"icon": { "path": "images/Airdrop & Handoff.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Airdrop & and Handoff AirPlay"
 	},
 	{
@@ -315,7 +319,7 @@ function general {
 		"subtitle": "System Settings → General → Autofill & Passwords",
 		"arg": "x-apple.systempreferences:com.apple.Passwords-Settings.extension",
 		"icon": { "path": "images/Autofill & Passwords.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Autofill & and Passwords"
 	},
 	{
@@ -323,7 +327,7 @@ function general {
 		"subtitle": "System Settings → General → Date & Time",
 		"arg": "x-apple.systempreferences:com.apple.Date-Time-Settings.extension",
 		"icon": { "path": "images/Date & Time.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Date & and Time Clock"
 	},
 	{
@@ -331,7 +335,7 @@ function general {
 		"subtitle": "System Settings → General → Language & Region",
 		"arg": "x-apple.systempreferences:com.apple.Localization-Settings.extension",
 		"icon": { "path": "images/Language & Region.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Language & and Region"
 	},
 	{
@@ -339,7 +343,7 @@ function general {
 		"subtitle": "System Settings → General → Login Items & Extensions",
 		"arg": "x-apple.systempreferences:com.apple.LoginItems-Settings.extension",
 		"icon": { "path": "images/Login Items & Extensions.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Login Items & and Extensions"
 	},
 	{
@@ -347,7 +351,7 @@ function general {
 		"subtitle": "System Settings → General → Storage",
 		"arg": "x-apple.systempreferences:com.apple.Sharing-Settings.extension",
 		"icon": { "path": "images/Storage.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Sharing SSH SFTP SMB Samba AFP"
 	},
 	{
@@ -355,14 +359,14 @@ function general {
 		"subtitle": "System Settings → General → Startup Disk",
 		"arg": "x-apple.systempreferences:com.apple.Startup-Disk-Settings.extension",
 		"icon": { "path": "images/Startup Disk.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } }
 	},
 	{
 		"title": "Time Machine",
 		"subtitle": "System Settings → General → Time Machine",
 		"arg": "x-apple.systempreferences:com.apple.Time-Machine-Settings.extension",
 		"icon": { "path": "images/Time Machine.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Time Machine Backup Up Restore"
 	},
 	$([[ ${gridCols} != 7 ]] && for i in {1..$((5+${gap}*2 < ${gridCols} ? 5:1))}; do echo $spacer; done)
@@ -371,7 +375,7 @@ function general {
 		"subtitle": "System Settings → General → Device Management",
 		"arg": "x-apple.systempreferences:com.apple.Profiles-Settings.extension",
 		"icon": { "path": "images/Device Management.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Device Management Profiles"
 	},
 	{
@@ -379,7 +383,7 @@ function general {
 		"subtitle": "System Settings → General → Transfer or Reset",
 		"arg": "x-apple.systempreferences:com.apple.Transfer-Reset-Settings.extension",
 		"icon": { "path": "images/Transfer or Reset.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Transfer or Reset Erase"
 	},
 	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
@@ -391,12 +395,13 @@ function accessibility {
 		"title": "",
 		"subtitle": "System Settings → Accessibility",
 		"valid": false,
-		"mods": { "shift": { "subtitle": "System Settings" } }
+		"mods": { "shift": { "subtitle": "System Settings", "variables":{"nestedPane":"accessibility"} } }
 	},'
     goBack='{
 		"title": "Go Back",
 		"subtitle": "System Settings",
-		"icon": { "path": "images/Settings.png" }
+		"icon": { "path": "images/Settings.png" },
+		"variables": { "nestedPane": "accessibility" }
 	},'
 
     [[ -z "${submenu}" ]] && goBack="${spacer}"
@@ -407,77 +412,77 @@ function accessibility {
 		"subtitle": "System Settings → Accessibility → VoiceOver",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?VoiceOver",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Hover Text",
 		"subtitle": "System Settings → Accessibility → Hover Text",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?hoverText",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Zoom",
 		"subtitle": "System Settings → Accessibility → Zoom",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Zoom",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Display",
 		"subtitle": "System Settings → Accessibility → Display",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Display",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Spoken Content",
 		"subtitle": "System Settings → Accessibility → Spoken Content",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?SpokenContent",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Descriptions",
 		"subtitle": "System Settings → Accessibility → Descriptions",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Descriptions",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Hearing Devices",
 		"subtitle": "System Settings → Accessibility → Hearing Devices",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Hearing",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Audio",
 		"subtitle": "System Settings → Accessibility → Audio",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Audio",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "RTT",
 		"subtitle": "System Settings → Accessibility → RTT",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?RTT",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Captions",
 		"subtitle": "System Settings → Accessibility → Captions",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Captions",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Live Captions",
 		"subtitle": "System Settings → Accessibility → Live Captions",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?LiveCaptions",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	$(for i in {1..$((1+${gap}*2))}; do echo $spacer; done)
 	{
@@ -485,28 +490,28 @@ function accessibility {
 		"subtitle": "System Settings → Accessibility → Voice Control",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?VoiceControl",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Keyboard",
 		"subtitle": "System Settings → Accessibility → Keyboard",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Keyboard",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Pointer Control",
 		"subtitle": "System Settings → Accessibility → Pointer Control",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?PointerControl",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Switch Control",
 		"subtitle": "System Settings → Accessibility → Switch Control",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?SwitchControl",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
 	{
@@ -514,21 +519,21 @@ function accessibility {
 		"subtitle": "System Settings → Accessibility → Live Speech",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?LiveSpeech",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Personal Voice",
 		"subtitle": "System Settings → Accessibility → Personal Voice",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?PersonalVoice",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Vocal Shortcuts",
 		"subtitle": "System Settings → Accessibility → Vocal Shortcuts",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?vocalShortcuts",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
 	{
@@ -536,14 +541,14 @@ function accessibility {
 		"subtitle": "System Settings → Accessibility → Siri",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Siri",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
 		"title": "Shortcut",
 		"subtitle": "System Settings → Accessibility → Shortcut",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Shortcut",
 		"icon": { "path": "images/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
 	${goBack}
@@ -556,12 +561,13 @@ function privacySecurity {
 		"title": "",
 		"subtitle": "System Settings → Privacy & Security",
 		"valid": false,
-		"mods": { "shift": { "subtitle": "System Settings" } }
+		"mods": { "shift": { "subtitle": "System Settings", "variables":{"nestedPane":"privacySecurity"} } }
 	},'
     goBack='{
 		"title": "Go Back",
 		"subtitle": "System Settings",
-		"icon": { "path": "images/Settings.png" }
+		"icon": { "path": "images/Settings.png" },
+		"variables": { "nestedPane": "privacySecurity" }
 	},'
 
     [[ -z "${submenu}" ]] && goBack="${spacer}"
@@ -572,7 +578,7 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Location Services",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_LocationServices",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	$(for i in {1..$((5+${gap}))}; do echo $spacer; done)
 	{
@@ -580,35 +586,35 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Calendars",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Calendars",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Contacts",
 		"subtitle": "System Settings → Privacy & Security → Contacts",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Contacts",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Files and Folders",
 		"subtitle": "System Settings → Privacy & Security → Files and Folders",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_FilesAndFolders",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Full Disk Access",
 		"subtitle": "System Settings → Privacy & Security → Full Disk Access",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_AllFiles",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Home",
 		"subtitle": "System Settings → Privacy & Security → Home",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_HomeKit",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } },
 		"match": "HomeKit"
 	},
 	{
@@ -616,7 +622,7 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Media & Apple Music",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Media",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } },
 		"match": "Media & and Apple Music"
 	},
 	{
@@ -624,21 +630,21 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Passkeys Access for Web Browsers",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_PasskeyAccess",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Photos",
 		"subtitle": "System Settings → Privacy & Security → Photos",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Photos",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Reminders",
 		"subtitle": "System Settings → Privacy & Security → Reminders",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Reminders",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	$(for i in {1..$((3+${gap}*2))}; do echo $spacer; done)
 	{
@@ -646,77 +652,77 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Accessibility",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Accessibility",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "App Management",
 		"subtitle": "System Settings → Privacy & Security → App Management",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_AppBundles",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Automation",
 		"subtitle": "System Settings → Privacy & Security → Automation",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Automation",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Bluetooth",
 		"subtitle": "System Settings → Privacy & Security → Bluetooth",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Bluetooth",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Camera",
 		"subtitle": "System Settings → Privacy & Security → Camera",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Camera",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Developer Tools",
 		"subtitle": "System Settings → Privacy & Security → Developer Tools",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_DevTools",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Focus",
 		"subtitle": "System Settings → Privacy & Security → Focus",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Focus",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Input Monitoring",
 		"subtitle": "System Settings → Privacy & Security → Input Monitoring",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_ListenEvent",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Local Network",
 		"subtitle": "System Settings → Privacy & Security → Local Network",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Microphone",
 		"subtitle": "System Settings → Privacy & Security → Microphone",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Microphone",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Motion & Fitness",
 		"subtitle": "System Settings → Privacy & Security → Motion & Fitness",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Motion",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } },
 		"match": "Motion & and Fitness"
 	},
 	{
@@ -724,14 +730,14 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Remote Desktop",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_RemoteDesktop",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Screen & System Audio Recording",
 		"subtitle": "System Settings → Privacy & Security → Screen & System Audio Recording",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_ScreenCapture",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } },
 		"match": "Screen & an System Audio Recording"
 	},
 	{
@@ -739,7 +745,7 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Speech Recognition",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_SpeechRecognition",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	$([[ ${gridCols} != 7 ]] && for i in {1..$((4+${gap}*3 < ${gridCols} ? 4:2))}; do echo $spacer; done)
 	{
@@ -747,14 +753,14 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Sensitive Content Warning",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_NudityDetection",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Analytics & Improvements",
 		"subtitle": "System Settings → Privacy & Security → Analytics & Improvements",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Analytics",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } },
 		"match": "Analytics & and Improvements"
 	},
 	{
@@ -762,14 +768,14 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → Apple Advertising",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Advertising",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Apple Intelligence Report",
 		"subtitle": "System Settings → Privacy & Security → Apple Intelligence Report",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
 	{
@@ -777,35 +783,35 @@ function privacySecurity {
 		"subtitle": "System Settings → Privacy & Security → FileVault",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?FileVault",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Lockdown Mode",
 		"subtitle": "System Settings → Privacy & Security → Lockdown Mode",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?LockdownMode",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Accessories",
 		"subtitle": "System Settings → Privacy & Security → Accessories",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	{
 		"title": "Background Security Improvements",
 		"subtitle": "System Settings → Privacy & Security → Background Security Improvements",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?SecurityImprovements",
 		"icon": { "path": "images/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
 	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
 	${goBack}
 EOB
 }
 
-echo '{"items": ['
+echo '{"preselect": "'${nestedPane}'", "items": ['
 [[ -z "${submenu}" ]] && settings
 [[ (-z "${submenu}" && "${showGeneral}" -eq 1) || "${submenu}" == "general" ]] && general
 [[ (-z "${submenu}" && "${showAccessibility}" -eq 1) || "${submenu}" == "accessibility" ]] && accessibility
