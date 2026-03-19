@@ -382,24 +382,27 @@ if ($.getenv("runImmediately") == 1) {
 	<key>readme</key>
 	<string>## Usage
 
-View and search for System Settings panes with the `sse` keyword.
+View and search for System Settings panes via the `sse` keyword.
 
 ![Entering workflow keyword](images/about/keyword.png)
 
-Select the desired menu to open in System Settings. Scroll through results or type to filter.
+Select a settings pane to open in System Settings. Scroll through results or type to filter.
 
 ![Viewing main settings](images/about/mainSettings.png)
 
-* &lt;kbd&gt;↩&lt;/kbd&gt; Open selected pane in System Settings
-* &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt; Open nested pane directly in System Settings
+* &lt;kbd&gt;↩&lt;/kbd&gt; Open selected pane in System Settings.
+* &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt; Open nested pane directly in System Settings.
 
-Nested panes such as `General` and `Accessibility` have more settings panes nested within them. These panes are browsable within Alfred, but can be opened directly by holding Command &lt;kbd&gt;⌘&lt;/kbd&gt;. They can also be selectively included in the main search results from the [Workflow's Configuration](https://www.alfredapp.com/help/workflows/user-configuration/).
+Nested panes, such as `General` and `Accessibility`, contain additional settings browsable within Alfred. These settings can also be selectively included in the main search results from the [Workflow's Configuration](https://www.alfredapp.com/help/workflows/user-configuration/).
 
 ![Viewing General Settings](images/about/generalSettings.png)
 
-Natural language and sub-settings search are supported, so `and` matches `&amp;` and `Mission Control` matches its parent pane `Desktop &amp; Dock`.
+* &lt;kbd&gt;↩&lt;/kbd&gt; Open selected pane in System Settings.
+* &lt;kbd&gt;⇧&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt; Return to main search results.
 
-![Searching for settings panes](images/about/autofill.png)
+Settings are searchable using natural language and related keywords. For example, `and` matches `&amp;`, and `Mission Control` matches its parent setting `Desktop &amp; Dock`.
+
+![Searching for settings panes](images/about/touchid.png)
 
 ![Searching for settings panes](images/about/missionControl.png)
 
@@ -528,7 +531,7 @@ Configure the [Hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/
 				<string>Run Without Confirmation</string>
 			</dict>
 			<key>description</key>
-			<string>Optionally run the workflow immediately upon keyword match</string>
+			<string>Optionally run the workflow immediately upon keyword match.</string>
 			<key>label</key>
 			<string>Keyword Behaviour</string>
 			<key>type</key>
@@ -558,7 +561,7 @@ Configure the [Hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/
 				</array>
 			</dict>
 			<key>description</key>
-			<string>Change the cell size within the grid</string>
+			<string>Change the size of settings icons within the grid.</string>
 			<key>label</key>
 			<string>Icon Size</string>
 			<key>type</key>
