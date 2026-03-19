@@ -550,7 +550,7 @@ function accessibility {
 EOB
 }
 function privacySecurity {
-    # Apple Intelligence Report, Local Network currently have no URL
+    # Apple Intelligence Report/Local Network/Accessories currently have no URL
 
     spacer='{
 		"title": "",
@@ -785,7 +785,21 @@ function privacySecurity {
 		"icon": { "path": "images/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
 	},
-	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
+	{
+		"title": "Accessories",
+		"subtitle": "System Settings → Privacy & Security → Accessories",
+		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security",
+		"icon": { "path": "images/Privacy & Security.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+	},
+	{
+		"title": "Background Security Improvements",
+		"subtitle": "System Settings → Privacy & Security → Background Security Improvements",
+		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?SecurityImprovements",
+		"icon": { "path": "images/Privacy & Security.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "" } }
+	},
+	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
 	${goBack}
 EOB
 }
