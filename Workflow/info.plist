@@ -311,25 +311,6 @@ if ($.getenv("runImmediately") == 1) {
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>externaltriggerid</key>
-				<string>listSettings</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>A06AE1FD-8C6F-4253-B457-A9B9E77E6419</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -357,6 +338,25 @@ if ($.getenv("runImmediately") == 1) {
 			<string>0214A1CF-CD90-405A-A5E7-08F166C8FEA6</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>listSettings</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>A06AE1FD-8C6F-4253-B457-A9B9E77E6419</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -538,6 +538,36 @@ Configure the [Hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/
 			<string>checkbox</string>
 			<key>variable</key>
 			<string>runImmediately</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>auto</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Auto</string>
+						<string>auto</string>
+					</array>
+					<array>
+						<string>Light</string>
+						<string>light</string>
+					</array>
+					<array>
+						<string>Dark</string>
+						<string>dark</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Change the appearance of settings icons within the grid.</string>
+			<key>label</key>
+			<string>Appearance</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>appearance</string>
 		</dict>
 		<dict>
 			<key>config</key>
