@@ -1,6 +1,10 @@
 #!/bin/zsh --no-rcs
 
-gap=$((${gridCols}-6))
+# Icon Locations
+# /System/Library/ExtensionKit/Extensions
+# /System/Library/CoreServices
+# /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/Assets.car
+
 [[ "${appearance}" == "dark" || "${appearance}" == "auto" && $(defaults read -g AppleInterfaceStyle) == "Dark" ]] && mode="dark" || mode="light"
 
 function settings {
@@ -17,7 +21,6 @@ function settings {
 	},'
 
     [[ $(bioutil -r) == *"Biometrics"* ]] && loginPassword="Touch ID & Password" || loginPassword="Login Password"
-    [[ $(sysctl -n machdep.cpu.brand_string) == *"Apple"* ]] && siri="Apple Intelligence & Siri" || siri="Siri"
     [[ $(pmset -g ps) == *"InternalBattery"* ]] && battery="Battery" || battery="Energy"
     if [[ $(scutil --nc list | wc -l) -gt 1 ]]; then
         showVPN="${vpn}"
@@ -46,7 +49,7 @@ function settings {
 		"icon": { "path": "images/${mode}/Media & Purchases.png" },
 		"match": "Media & and Purchases Subscriptions"
 	},
-	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 3 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Wi-Fi",
 		"subtitle": "System Settings → Wi-Fi",
@@ -76,7 +79,7 @@ function settings {
 		"match": "Battery Energy Saver"
 	},
 	${spacerVPN}
-	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 5 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"uid": "general",
 		"title": "General",
@@ -97,7 +100,7 @@ function settings {
 		"title": "Appearance",
 		"subtitle": "System Settings → Appearance",
 		"arg": "x-apple.systempreferences:com.apple.Appearance-Settings.extension",
-		"icon": { "path": "images/Appearance.png" },
+		"icon": { "path": "images/${mode}/Appearance.png" },
 		"match": "Appearance Dark Light"
 	},
 	{
@@ -108,17 +111,17 @@ function settings {
 		"match": "Control Center Centre Menu bar Menubar"
 	},
 	{
-		"title": "${siri}",
-		"subtitle": "System Settings → ${siri}",
+		"title": "Siri",
+		"subtitle": "System Settings → Siri",
 		"arg": "x-apple.systempreferences:com.apple.Siri-Settings.extension",
-		"icon": { "path": "images/${mode}/${siri}.png" },
-		"match": "Apple Intelligence & and Siri"
+		"icon": { "path": "images/${mode}/Siri.png" },
+		"match": "Apple Intelligence & and Siri AI"
 	},
 	{
 		"title": "Desktop & Dock",
 		"subtitle": "System Settings → Desktop & Dock",
 		"arg": "x-apple.systempreferences:com.apple.Desktop-Settings.extension",
-		"icon": { "path": "images/Desktop & Dock.png" },
+		"icon": { "path": "images/${mode}/Desktop & Dock.png" },
 		"match": "Desktop & and Dock Stage Manager Mission Control Widgets Windows Default Web Browser Spaces Hot Corners"
 	},
 	{
@@ -141,7 +144,7 @@ function settings {
 		"icon": { "path": "images/${mode}/Wallpaper.png" },
 		"match": "Wallpaper Screen Saver Clock"
 	},
-	$(for i in {1..$((3+${gap}*2))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 9 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Notifications",
 		"subtitle": "System Settings → Notifications",
@@ -167,12 +170,12 @@ function settings {
 		"arg": "x-apple.systempreferences:com.apple.Screen-Time-Settings.extension",
 		"icon": { "path": "images/${mode}/Screen Time.png" }
 	},
-	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 4 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Lock Screen",
 		"subtitle": "System Settings → Lock Screen",
 		"arg": "x-apple.systempreferences:com.apple.Lock-Screen-Settings.extension",
-		"icon": { "path": "images/Lock Screen.png" }
+		"icon": { "path": "images/${mode}/Lock Screen.png" }
 	},
 	{
 		"uid": "privacySecurity",
@@ -197,7 +200,7 @@ function settings {
 		"icon": { "path": "images/${mode}/Users & Groups.png" },
 		"match": "Users & and Groups Administrator Account"
 	},
-	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 4 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Internet Accounts",
 		"subtitle": "System Settings → Internet Accounts",
@@ -205,10 +208,10 @@ function settings {
 		"icon": { "path": "images/${mode}/Internet Accounts.png" }
 	},
 	{
-		"title": "Game Center",
-		"subtitle": "System Settings → Game Center",
+		"title": "Game Centre",
+		"subtitle": "System Settings → Game Centre",
 		"arg": "x-apple.systempreferences:com.apple.Game-Center-Settings.extension",
-		"icon": { "path": "images/${mode}/Game Center.png" },
+		"icon": { "path": "images/${mode}/Game Centre.png" },
 		"match": "Game Center Centre"
 	},
 	{
@@ -221,10 +224,10 @@ function settings {
 		"title": "Wallet & Apple Pay",
 		"subtitle": "System Settings → Wallet & Apple Pay",
 		"arg": "x-apple.systempreferences:com.apple.WalletSettingsExtension",
-		"icon": { "path": "images/Wallet & Apple Pay.png" },
+		"icon": { "path": "images/${mode}/Wallet & Apple Pay.png" },
 		"match": "Wallet & and Apple Pay Payment"
 	},
-	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 4 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Keyboard",
 		"subtitle": "System Settings → Keyboard",
@@ -257,7 +260,7 @@ function settings {
 		"icon": { "path": "images/${mode}/Printers & Scanners.png" },
 		"match": "Printers & and Scanners"
 	},
-	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 5 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 EOB
 }
 function general {
@@ -298,7 +301,7 @@ function general {
 		"icon": { "path": "images/${mode}/Storage.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } }
 	},
-	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 3 % ${gridCols} ) % ${gridCols} - 2 )) echo ${spacer})
 	{
 		"title": "AppleCare & Warranty",
 		"subtitle": "System Settings → General → AppleCare & Warranty",
@@ -308,12 +311,12 @@ function general {
 		"match": "AppleCare & and Warranty Coverage Legal"
 	},
 	{
-		"title": "Airdrop & Handoff",
-		"subtitle": "System Settings → General → Airdrop & Handoff",
+		"title": "Airdrop & Continuity",
+		"subtitle": "System Settings → General → Airdrop & Continuity",
 		"arg": "x-apple.systempreferences:com.apple.AirDrop-Handoff-Settings.extension",
 		"icon": { "path": "images/${mode}/Airdrop & Handoff.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
-		"match": "Airdrop & and Handoff AirPlay"
+		"match": "Airdrop & and Handoff AirPlay Continuity"
 	},
 	{
 		"title": "Autofill & Passwords",
@@ -345,7 +348,7 @@ function general {
 		"arg": "x-apple.systempreferences:com.apple.LoginItems-Settings.extension",
 		"icon": { "path": "images/${mode}/Login Items & Extensions.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
-		"match": "Login Items & and Extensions"
+		"match": "Login Items & and Extensions Background App Activity"
 	},
 	{
 		"title": "Sharing",
@@ -370,7 +373,7 @@ function general {
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Time Machine Backup Up Restore"
 	},
-	$([[ ${gridCols} != 7 ]] && for i in {1..$((5+${gap}*2 < ${gridCols} ? 5:1))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 7 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Device Management",
 		"subtitle": "System Settings → General → Device Management",
@@ -387,7 +390,7 @@ function general {
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"general"} } },
 		"match": "Transfer or Reset Erase"
 	},
-	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 2 % ${gridCols} ) % ${gridCols} - 1 )) echo ${spacer})
 	${goBack}
 EOB
 }
@@ -416,16 +419,16 @@ function accessibility {
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
-		"title": "Hover Text",
-		"subtitle": "System Settings → Accessibility → Hover Text",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?hoverText",
+		"title": "Zoom",
+		"subtitle": "System Settings → Accessibility → Zoom",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Zoom",
 		"icon": { "path": "images/${mode}/Accessibility.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
-		"title": "Zoom",
-		"subtitle": "System Settings → Accessibility → Zoom",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Zoom",
+		"title": "Hover Text",
+		"subtitle": "System Settings → Accessibility → Hover Text",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?hoverText",
 		"icon": { "path": "images/${mode}/Accessibility.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
@@ -437,55 +440,28 @@ function accessibility {
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
-		"title": "Spoken Content",
-		"subtitle": "System Settings → Accessibility → Spoken Content",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?SpokenContent",
+		"title": "Motion",
+		"subtitle": "System Settings → Accessibility → Display",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Motion",
 		"icon": { "path": "images/${mode}/Accessibility.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
 	{
-		"title": "Descriptions",
-		"subtitle": "System Settings → Accessibility → Descriptions",
+		"title": "Read & Speak",
+		"subtitle": "System Settings → Accessibility → Read & Speak",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?SpokenContent",
+		"icon": { "path": "images/${mode}/Accessibility.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } },
+		"match": "Spoken Content Read & and Speak"
+	},
+	{
+		"title": "Audio Descriptions",
+		"subtitle": "System Settings → Accessibility → Audio Descriptions",
 		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Descriptions",
 		"icon": { "path": "images/${mode}/Accessibility.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
-	{
-		"title": "Hearing Devices",
-		"subtitle": "System Settings → Accessibility → Hearing Devices",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Hearing",
-		"icon": { "path": "images/${mode}/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
-	},
-	{
-		"title": "Audio",
-		"subtitle": "System Settings → Accessibility → Audio",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Audio",
-		"icon": { "path": "images/${mode}/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
-	},
-	{
-		"title": "RTT",
-		"subtitle": "System Settings → Accessibility → RTT",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?RTT",
-		"icon": { "path": "images/${mode}/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
-	},
-	{
-		"title": "Captions",
-		"subtitle": "System Settings → Accessibility → Captions",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Captions",
-		"icon": { "path": "images/${mode}/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
-	},
-	{
-		"title": "Live Captions",
-		"subtitle": "System Settings → Accessibility → Live Captions",
-		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?LiveCaptions",
-		"icon": { "path": "images/${mode}/Accessibility.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
-	},
-	$(for i in {1..$((1+${gap}*2))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 7 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Voice Control",
 		"subtitle": "System Settings → Accessibility → Voice Control",
@@ -514,7 +490,50 @@ function accessibility {
 		"icon": { "path": "images/${mode}/Accessibility.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
-	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 4 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
+	{
+		"title": "Hearing Devices",
+		"subtitle": "System Settings → Accessibility → Hearing Devices",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Hearing",
+		"icon": { "path": "images/${mode}/Accessibility.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
+	},
+	{
+		"title": "Audio",
+		"subtitle": "System Settings → Accessibility → Audio",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Audio",
+		"icon": { "path": "images/${mode}/Accessibility.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
+	},
+	{
+		"title": "RTT",
+		"subtitle": "System Settings → Accessibility → RTT",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?RTT",
+		"icon": { "path": "images/${mode}/Accessibility.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
+	},
+	{
+		"title": "Subtitles and Captioning",
+		"subtitle": "System Settings → Accessibility → Subtitles and Captioning",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?Captions",
+		"icon": { "path": "images/${mode}/Accessibility.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
+	},
+	{
+		"title": "Live Captions",
+		"subtitle": "System Settings → Accessibility → Live Captions",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?LiveCaptions",
+		"icon": { "path": "images/${mode}/Accessibility.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
+	},
+	{
+		"title": "Name Recognition",
+		"subtitle": "System Settings → Accessibility → Name Recognition",
+		"arg": "x-apple.systempreferences:com.apple.Accessibility-Settings.extension?NameRecognition",
+		"icon": { "path": "images/${mode}/Accessibility.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
+	},
+	$(repeat $(( ( ${gridCols} - 6 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Live Speech",
 		"subtitle": "System Settings → Accessibility → Live Speech",
@@ -536,7 +555,7 @@ function accessibility {
 		"icon": { "path": "images/${mode}/Accessibility.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
-	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 3 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Siri",
 		"subtitle": "System Settings → Accessibility → Siri",
@@ -551,12 +570,12 @@ function accessibility {
 		"icon": { "path": "images/${mode}/Accessibility.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"accessibility"} } }
 	},
-	$(for i in {1..$((3+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 2 % ${gridCols} ) % ${gridCols} - 1 )) echo ${spacer})
 	${goBack}
 EOB
 }
 function privacySecurity {
-    # Apple Intelligence Report/Local Network/Accessories currently have no URL
+    # Local Network/Blocked Contacts currently have no URL
 
     spacer='{
 		"title": "",
@@ -581,7 +600,7 @@ function privacySecurity {
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
-	$(for i in {1..$((5+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 1 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Calendars",
 		"subtitle": "System Settings → Privacy & Security → Calendars",
@@ -647,14 +666,7 @@ function privacySecurity {
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
-	$(for i in {1..$((3+${gap}*2))}; do echo $spacer; done)
-	{
-		"title": "Accessibility",
-		"subtitle": "System Settings → Privacy & Security → Accessibility",
-		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Accessibility",
-		"icon": { "path": "images/${mode}/Privacy & Security.png" },
-		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
-	},
+	$(repeat $(( ( ${gridCols} - 9 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "App Management",
 		"subtitle": "System Settings → Privacy & Security → App Management",
@@ -687,6 +699,13 @@ function privacySecurity {
 		"title": "Developer Tools",
 		"subtitle": "System Settings → Privacy & Security → Developer Tools",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_DevTools",
+		"icon": { "path": "images/${mode}/Privacy & Security.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
+	},
+	{
+		"title": "Device Control and Data Access",
+		"subtitle": "System Settings → Privacy & Security → Device Control and Data Access",
+		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_Accessibility",
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
@@ -739,7 +758,7 @@ function privacySecurity {
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_ScreenCapture",
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } },
-		"match": "Screen & an System Audio Recording"
+		"match": "Screen & and System Audio Recording"
 	},
 	{
 		"title": "Speech Recognition",
@@ -748,11 +767,18 @@ function privacySecurity {
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
-	$([[ ${gridCols} != 7 ]] && for i in {1..$((4+${gap}*3 < ${gridCols} ? 4:2))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 14 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "Sensitive Content Warning",
 		"subtitle": "System Settings → Privacy & Security → Sensitive Content Warning",
 		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_NudityDetection",
+		"icon": { "path": "images/${mode}/Privacy & Security.png" },
+		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
+	},
+	{
+		"title": "Blocked Contacts",
+		"subtitle": "System Settings → Privacy & Security → Blocked Contacts",
+		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security",
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
@@ -774,11 +800,11 @@ function privacySecurity {
 	{
 		"title": "Apple Intelligence Report",
 		"subtitle": "System Settings → Privacy & Security → Apple Intelligence Report",
-		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security",
+		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_AppleIntelligenceReport",
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
-	$(for i in {1..$((2+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 5 % ${gridCols} ) % ${gridCols} )) echo ${spacer})
 	{
 		"title": "FileVault",
 		"subtitle": "System Settings → Privacy & Security → FileVault",
@@ -796,7 +822,7 @@ function privacySecurity {
 	{
 		"title": "Accessories",
 		"subtitle": "System Settings → Privacy & Security → Accessories",
-		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Security",
+		"arg": "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Accessories",
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
@@ -807,7 +833,7 @@ function privacySecurity {
 		"icon": { "path": "images/${mode}/Privacy & Security.png" },
 		"mods": { "shift": { "subtitle": "System Settings", "arg": "", "variables":{"nestedPane":"privacySecurity"} } }
 	},
-	$(for i in {1..$((1+${gap}))}; do echo $spacer; done)
+	$(repeat $(( ( ${gridCols} - 4 % ${gridCols} ) % ${gridCols} - 1 )) echo ${spacer})
 	${goBack}
 EOB
 }
